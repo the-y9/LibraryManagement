@@ -98,7 +98,7 @@ reporting, and sending emails daily and APIs for interaction with library resour
 1. Clone the repository:
 
 ```
-git clone https://github.com/YOUR_USERNAME/LibraryManagementSystem.git
+git clone https://github.com/the-y9/LibraryManagement.git
 cd LibraryManagementSystem
 ```
 2. Install the required packages:
