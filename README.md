@@ -99,7 +99,7 @@ reporting, and sending emails daily and APIs for interaction with library resour
 
 ```
 git clone https://github.com/the-y9/LibraryManagement.git
-cd LibraryManagementSystem
+cd LibraryManagement
 ```
 2. Install the required packages:
 
