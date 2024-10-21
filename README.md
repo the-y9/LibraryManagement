@@ -120,7 +120,7 @@ python main.py
 3. Access the application in your web browser at http://localhost:5000/.
 
 ### Starting Background Services
-1. Start the Redis server:
+1. Start the Redis server on wsl:
 
 ```
 redis-server
@@ -128,10 +128,10 @@ redis-server
 2. Start Celery workers:
 
 ```
-celery -A app.celery worker --loglevel=info
+celery -A main:celery_app worker --loglevel INFO
 ```
 3. Start Celery beat:
 
 ```
-celery -A app.celery beat --loglevel=info
+celery -A main:celery_app beat --loglevel INFO
 ```
