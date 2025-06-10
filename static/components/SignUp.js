@@ -18,6 +18,12 @@ export default{
               {{error}}
             </span>
         </div>
+        <div class="alert alert-success" role="alert" v-if='msg'>
+            <i class="bi bi-info-circle"></i>
+            <span class="form-text text-success">
+              {{msg}}
+            </span>
+        </div>
         <button class="btn btn-primary m-2" @click='signup'>Sign Up</button>
         <router-link class="btn btn-primary m-2" to="/login">Login</router-link>
     </div>
@@ -30,6 +36,7 @@ export default{
                 password: null,
             },
             error: null,
+            msg: null,
         }
     },
     methods:{
@@ -44,9 +51,11 @@ export default{
                 })
                 const data = await res.json()
                 if(res.ok){
-                    
-                    console.log(data)
-                } else{this.error = data.message}
+                    this.msg = "Signed Up successfully! Request admin to activate your account."
+                    this.error = null;
+                } else{this.error = data.message;
+                    this.msg = null;
+                }
             }catch(error){ this.error = error }
         },
     },

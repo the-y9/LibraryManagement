@@ -15,6 +15,7 @@ from upind import dummy_data
 
 @app.get('/')
 def home():
+    print(121, User.query.first())
     if not User.query.first():
         dummy_data()
     return render_template("index.html")
