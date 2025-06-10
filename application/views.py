@@ -10,9 +10,13 @@ from .models import User, Issues,db
 from .sec import datastore
 from sqlalchemy import or_ 
 import smtplib
+from upind import dummy_data
+
 
 @app.get('/')
 def home():
+    if not User.query.first():
+        dummy_data()
     return render_template("index.html")
 
 @app.get('/admin')

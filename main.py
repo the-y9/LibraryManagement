@@ -9,6 +9,7 @@ import flask_excel as excel
 from celery.schedules import crontab
 from application.tasks import daily_reminder
 from application.instance import cache
+from upind import dummy_data
 
 def create_app():
     app = Flask(__name__)
@@ -34,5 +35,6 @@ def send_email(sender,**kwargs):
         daily_reminder.s()
     )
 
+import os
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000))) 
