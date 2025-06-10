@@ -5,7 +5,7 @@ import AddBook from "./components/AddBook.js"
 import Books from "./components/Books.js"
 import Issues from "./components/Issues.js"
 import EditBook from "./components/EditBook.js"
-import SignUp from "./components/signup.js"
+import SignUp from "./components/SignUp.js"
 
 const routes = [    
     {path:'/',component: Home, name: 'Home'},
