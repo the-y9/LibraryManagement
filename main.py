@@ -9,7 +9,6 @@ import flask_excel as excel
 from celery.schedules import crontab
 from application.tasks import daily_reminder
 from application.instance import cache
-from upind import dummy_data
 
 def create_app():
     app = Flask(__name__)
