@@ -10,7 +10,7 @@
 The application includes demo credentials:
 
 *   **Admin User:** `admin@g.com` / `ad`
-*   **Regular User:** `w` / `w`
+*   **Regular User:** `u1@g.com` / `u1`
 
 ### 1. Sign Up (If you don't have an account)
 
