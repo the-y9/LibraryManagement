@@ -2,18 +2,23 @@ import AdminActivity from "./AdminActivity.js";
 
 export default{
     template: `
-    <div>
-        <h1>Librarian</h1>
-        
-        <div class='row'>
-            <div class='col-1'><h3 class="pr-4">Books Requested</h3></div>
-            <div class='col-1'></div>
-            <div class='col-9'>
-                <canvas id="bookChart" width="6" height="1"></canvas>
-            </div>
+  <div>
+    <h1>Librarian</h1>
+    
+    <div class="container">
+      <div class="row align-items-center mb-3">
+        <div class="col">
+          <h3>Books Requested</h3>
         </div>
-        <!-- <AdminActivity /> -->
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <canvas id="bookChart" style="width: 100%; height: 300px;"></canvas>
+        </div>
+      </div>
     </div>
+  </div>
     `,
     components:{
         AdminActivity,

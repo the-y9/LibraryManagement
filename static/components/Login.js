@@ -1,30 +1,41 @@
 export default{
     template: `
-    <div class="d-flex justify-content-center">
-    <div class="mb-3 p-5 m-5 bg-light">
-    <h3>Login</h3>
-    <form>
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" autocomplete="email"
-            placeholder="name@example.com"
-            v-model="cred.email">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" autocomplete="current-password"
-            v-model="cred.password"><br>
-    </form>
-        <div class="alert alert-danger" role="alert" v-if='error'>
-            <i class="bi bi-info-circle"></i>
-            <span class="form-text text-danger">
-              {{error}}
-            </span>
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-sm-12 col-md-6 bg-light p-4 m-3 rounded shadow">
+                <h3>Login</h3>
+                <form @submit.prevent="login">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" autocomplete="email"
+                        placeholder="name@example.com" v-model="cred.email" />
+
+                    <label for="password" class="form-label mt-3">Password</label>
+                    <input type="password" class="form-control" id="password" autocomplete="current-password"
+                        v-model="cred.password" />
+
+                    <div class="alert alert-danger mt-3" role="alert" v-if="error">
+                    <i class="bi bi-info-circle"></i>
+                    <span class="form-text text-danger">{{ error }}</span>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                    <router-link class="btn btn-outline-primary" to="/signup">Sign Up</router-link>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-sm-12 col-md-6 p-3 m-3 rounded shadow" id="inform" style="overflow-y: auto; background-color: #f8f9fa;">
+                <div v-html="workflow"></div>
+            </div>
         </div>
-        <router-link class="btn btn-primary m-2" to="/signup">Sign Up</router-link>
-        <button class="btn btn-primary m-2" @click='login'>Login</button>
     </div>
-    </div>
+
     `,
     data(){
         return {
+             workflow: '',
             cred:{
                 email:null,
                 password: null,
@@ -32,6 +43,13 @@ export default{
             error: null,
         }
     },
+  mounted() {
+    fetch('static/workflow.md')
+      .then(res => res.text())
+      .then(text => {
+        this.workflow = marked.parse(text);
+      });
+  },
     methods:{
         async login(){
             const res = await fetch("/user-login", {
